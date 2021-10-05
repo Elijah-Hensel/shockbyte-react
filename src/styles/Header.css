@@ -1,0 +1,41 @@
+#header-container {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(11, 11, 11);
+  background: linear-gradient(
+    0deg,
+    rgba(11, 11, 11, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  padding: 2rem 0;
+  border-bottom: 0.5rem solid #161616;
+}
+.sb-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  margin-left: 4rem;
+}
+
+.vertical-break {
+  height: 1rem;
+  width: 0.2rem;
+  background-color: #fff;
+  margin: 0 1rem;
+}
+
+.header-text {
+  color: #fff;
+  font-weight: 600;
+}
+.sb-header-subtext {
+  width: 20%;
+}

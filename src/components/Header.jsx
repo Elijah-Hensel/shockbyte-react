@@ -6,7 +6,9 @@ const Header = () => {
     <header>
       <div id="header-container">
         <div className="sb-logo-container">
-          <img className="logo" src={logo} alt="Shockbyte Logo" />
+          <a href="https://www.shockbyte.com" alt="Shockbyte Homepage">
+            <img className="logo" src={logo} alt="Shockbyte Logo" />
+          </a>
           <div className="vertical-break"></div>
           <span className="header-text"> Admin Portal</span>
         </div>

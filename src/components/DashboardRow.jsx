@@ -28,28 +28,28 @@ const DashboardRow = ({
         <TableCell
           style={{ fontWeight: "bold", color: "white", padding: "5px" }}
         >
-          {id}
+          {id ? id : "n/a"}
         </TableCell>
         <TableCell style={{ color: "white", padding: "5px" }}>
-          {allocated_ram}
+          {allocated_ram ? allocated_ram : "n/a"}
         </TableCell>
         <TableCell style={{ color: "white", padding: "5px" }}>
-          {free_ram}
+          {free_ram ? free_ram : "n/a"}
         </TableCell>
         <TableCell
           style={{ color: "white", padding: "5px", fontSize: "small" }}
         >
-          {allocated_disk}
+          {allocated_disk ? allocated_disk : "n/a"}
         </TableCell>
         <TableCell
           style={{ color: "white", padding: "5px", fontSize: "small" }}
         >
-          {free_disk}
+          {free_disk ? free_disk : "n/a"}
         </TableCell>
         <TableCell
           style={{ color: "white", padding: "5px", fontSize: "small" }}
         >
-          {convDate} @ {convTime}
+          {up_since ? `${convDate} @ ${convTime}` : "n/a"}
         </TableCell>
       </TableRow>
     </>

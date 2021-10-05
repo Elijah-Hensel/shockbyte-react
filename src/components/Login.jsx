@@ -7,6 +7,7 @@ const Login = ({ user, loggedIn, setLoggedIn }) => {
 
   const onSubmit = () => {
     if (username !== user.username || password !== user.password) {
+      alert("Please enter the correct administrator username/password");
       return;
     }
     setLoggedIn(true);

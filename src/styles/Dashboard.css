@@ -1,127 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Roboto:wght@300&display=swap");
 
-#list-element {
-  width: 80%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #080808;
-  border: 1px solid #121212;
-}
-
-#list-element span {
-  height: 3em;
-  width: 100%;
-}
-
-#list-span {
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr;
-  font-size: 16px;
-  text-align: center;
-  padding-top: 0.5rem;
-}
-
-.sb-logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.heading-span {
-  background-color: #0f94ff;
-  margin-bottom: 0.5rem;
-}
-
-.heading-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  color: #fff;
-  text-align: center;
-  background-color: #080808;
-  margin-bottom: 4rem;
-  border-bottom: 1px solid #121212;
-}
-
-.heading-content h3 {
+.logout-btn {
   font-size: 14px;
-}
-
-.list-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-#data-list {
-  width: 100%;
-  height: auto;
-}
-
-.list-key {
-  color: white !important;
-}
-
-.data-list-item {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr;
-  font-size: 16px;
-  text-align: center;
-  color: white;
-  height: 2rem;
-  border-bottom: 1px solid #161616;
-}
-
-.data-list-item:first-of-type {
-  margin-top: 1rem;
-}
-
-.data-list-item p {
-  color: white;
-}
-
-#list-footer {
-  width: 100%;
-  height: 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem 1rem;
-}
-
-#pagination {
-  color: #fff;
-}
-
-#logout-btn {
-  font-size: 16px;
-  width: 6rem;
-  height: 3rem;
+  width: 4.5rem;
+  height: 2.5rem;
   color: #0f94ff;
   background-color: #161616;
   border: 1px solid #0f94ff;
   cursor: pointer;
+  margin-top: 20px;
 }
 
-#logout-btn:focus {
+.logout-btn:focus {
   color: #161616;
   background-color: #0f94ff;
   border: 1px solid #0f94ff;
-}
-
-.error {
-  color: red;
-  text-align: center;
-}
-
-.MuiTablePagination-actions,
-.MuiTablePagination-selectIcon {
-  color: white;
 }

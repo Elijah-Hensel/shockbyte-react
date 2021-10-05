@@ -11,6 +11,8 @@
   );
   padding: 2rem 0;
   border-bottom: 0.5rem solid #161616;
+  margin-bottom: 2rem;
+  z-index: 1;
 }
 .sb-logo-container {
   display: flex;

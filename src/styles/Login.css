@@ -32,6 +32,16 @@
   border-bottom: 1px solid #121212;
 }
 
+.content-link {
+  color: #0f94ff;
+  margin: 0 2px;
+  text-decoration: none;
+}
+
+.content-link:hover {
+  border-bottom: 1px solid #0f94ff;
+}
+
 .heading-content h3 {
   font-size: 14px;
 }

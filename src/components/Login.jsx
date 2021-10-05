@@ -7,7 +7,6 @@ const Login = ({ user, loggedIn, setLoggedIn }) => {
 
   const onSubmit = () => {
     if (username !== user.username || password !== user.password) {
-      console.error("WRONG BUDDY");
       return;
     }
     setLoggedIn(true);

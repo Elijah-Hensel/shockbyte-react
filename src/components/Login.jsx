@@ -4,22 +4,36 @@ import { useState, useEffect } from "react";
 const Login = ({ user, loggedIn, setLoggedIn }) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const toggleLogin = () => setLoggedIn((value) => !value);
+
+  const toggleLoginTrue = () => {
+    if (!loggedIn) {
+      setLoggedIn(true);
+    } else {
+      console.log("logged in is true");
+    }
+  };
 
   const onSubmit = () => {
     if (username !== user.username || password !== user.password) {
       alert("Please enter the correct administrator username/password");
       return;
     }
-    toggleLogin();
+    toggleLoginTrue();
     localStorage.setItem("adminLoggedIn", true);
   };
 
   useEffect(() => {
+    setLoggedIn(loggedIn);
     if (loggedIn === true) {
       window.location.href = "/dashboard";
     }
-  }, [loggedIn, setLoggedIn]);
+  }, [setLoggedIn, loggedIn]);
+
+  useEffect(() => {
+    if (localStorage.getItem("adminLoggedIn")) {
+      window.location.href = "/dashboard";
+    }
+  }, []);
 
   return (
     <div className="dashboard-container">

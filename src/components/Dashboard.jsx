@@ -65,10 +65,22 @@ const Dashboard = ({ loggedIn, setLoggedIn }) => {
     fetchAllServers();
   }, [setAllServers]);
 
-  const logOut = () => {
-    setLoggedIn(false);
-    localStorage.setItem("adminLoggedIn", false);
-    window.location.href = "/";
+  useEffect(() => {
+    console.log(loggedIn);
+    if (localStorage.getItem("adminLoggedIn")) {
+      setLoggedIn(true);
+      console.log(loggedIn, "POST EFFECT");
+    }
+  }, [loggedIn, setLoggedIn]);
+
+  const logOut = async () => {
+    try {
+      await setLoggedIn(false);
+      localStorage.removeItem("adminLoggedIn");
+      window.location.href = "/";
+    } catch (err) {
+      throw err;
+    }
   };
 
   const columns = [
@@ -101,66 +113,81 @@ const Dashboard = ({ loggedIn, setLoggedIn }) => {
 
   return (
     <>
-      <div
-        style={{
-          width: "100vw",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Paper className={classes.root}>
-          <div className="container-class">
-            <TableContainer className={classes.container}>
-              <Table stickyHeader aria-label="sticky table">
-                <TableHead>
-                  <TableRow>
-                    {columns.map((column) => (
-                      <TableCell
-                        className="list-cell"
-                        key={column.id}
-                        align={column.align}
-                        style={{
-                          minWidth: column.minWidth,
-                          fontWeight: "bold",
-                          backgroundColor: "#0f94ff",
-                        }}
-                      >
-                        {column.label}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {allServers.length > 1
-                    ? allServers
-                        .slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                        .map((row) => {
-                          return <DashboardRow key={row.id} allServers={row} />;
-                        })
-                    : `<p className="error"></p>Could Not Fetch Servers</p>`}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </div>
-          <TablePagination
-            className={classes.pagination}
-            rowsPerPageOptions={[10, 25, 100]}
-            component="div"
-            count={allServers.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
-        <button onClick={logOut} className="logout-btn">
-          Logout
-        </button>
-      </div>
+      {loggedIn === true ? (
+        <div
+          style={{
+            width: "100vw",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Paper className={classes.root}>
+            <div className="container-class">
+              <TableContainer className={classes.container}>
+                <Table stickyHeader aria-label="sticky table">
+                  <TableHead>
+                    <TableRow>
+                      {columns.map((column) => (
+                        <TableCell
+                          className="list-cell"
+                          key={column.id}
+                          align={column.align}
+                          style={{
+                            minWidth: column.minWidth,
+                            fontWeight: "bold",
+                            backgroundColor: "#0f94ff",
+                          }}
+                        >
+                          {column.label}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {allServers.length > 1
+                      ? allServers
+                          .slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                          .map((row) => {
+                            return (
+                              <DashboardRow key={row.id} allServers={row} />
+                            );
+                          })
+                      : `<p className="error"></p>Could Not Fetch Servers</p>`}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </div>
+            <TablePagination
+              className={classes.pagination}
+              rowsPerPageOptions={[10, 25, 100]}
+              component="div"
+              count={allServers.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+            <div className="button-container">
+              <button onClick={logOut} className="logout-btn">
+                Logout
+              </button>
+            </div>
+          </Paper>
+        </div>
+      ) : (
+        <p className="error">
+          This Page Is Restricted -- Please{" "}
+          <a href="/login" alt="login">
+            Login
+          </a>{" "}
+          For Access
+        </p>
+      )}
     </>
   );
 };

@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { LOGIN_ROUTE, DASHBOARD_ROUTE } from "../routes";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
+import ErrorComponent from "./ErrorComponent";
 
 const Pages = ({ user, loggedIn, setLoggedIn }) => {
   return (
@@ -19,6 +20,8 @@ const Pages = ({ user, loggedIn, setLoggedIn }) => {
             setLoggedIn={setLoggedIn}
           />
         </Route>
+        <Route path="/error" component={ErrorComponent} />
+        <Redirect from="*" to="/error" />
       </Switch>
     </>
   );

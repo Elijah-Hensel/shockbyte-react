@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Pages from "./components/Pages";
 
@@ -12,10 +12,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <div>
-      <header>
-        <Header />
-      </header>
+    <div id="main-container">
+      <Header />
       <main>
         <Pages user={user} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       </main>

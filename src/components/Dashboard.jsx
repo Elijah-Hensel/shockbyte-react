@@ -13,6 +13,7 @@ import DashboardRow from "./DashboardRow";
 
 const useStyles = makeStyles({
   root: {
+    height: "70vh",
     width: "80%",
     backgroundColor: "#080808",
   },
@@ -41,7 +42,6 @@ const Dashboard = ({ loggedIn, setLoggedIn }) => {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
   const [allServers, setAllServers] = useState([]);
 
   useEffect(() => {
@@ -56,10 +56,9 @@ const Dashboard = ({ loggedIn, setLoggedIn }) => {
           }
         );
         const data = await response.json();
-        console.log(data);
         setAllServers(data);
-        console.log(allServers);
       } catch (err) {
+        console.error("Could not fetch server information");
         throw err;
       }
     };
@@ -68,7 +67,7 @@ const Dashboard = ({ loggedIn, setLoggedIn }) => {
 
   const logOut = () => {
     setLoggedIn(false);
-    console.log(loggedIn);
+    localStorage.setItem("adminLoggedIn", false);
     window.location.href = "/";
   };
 
@@ -142,7 +141,7 @@ const Dashboard = ({ loggedIn, setLoggedIn }) => {
                         .map((row) => {
                           return <DashboardRow key={row.id} allServers={row} />;
                         })
-                    : "Could Not Fetch Servers"}
+                    : `<p className="error"></p>Could Not Fetch Servers</p>`}
                 </TableBody>
               </Table>
             </TableContainer>

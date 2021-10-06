@@ -1,4 +1,5 @@
 #header-container {
+  width: 100%;
   height: 4rem;
   display: flex;
   align-items: center;
@@ -40,4 +41,10 @@
 }
 .sb-header-subtext {
   width: 20%;
+}
+
+@media only screen and (max-width: 600px) {
+  .sb-header-subtext {
+    display: none;
+  }
 }
